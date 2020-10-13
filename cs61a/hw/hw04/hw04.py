@@ -132,8 +132,6 @@ def permutations(seq):
     >>> sorted(permutations("ab"))
     [['a', 'b'], ['b', 'a']]
     """
-    for elem in s:
-        return 
     def gen():
         yield iter(seq)
     def gen2(s):
