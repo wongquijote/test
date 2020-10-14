@@ -100,6 +100,7 @@ def repeated(t, k):
     2
     """
     assert k > 1
+    # a list of the repeated digits 
     my_list = [next(t)]
     for i in t:
         if my_list[0] == i:
@@ -132,14 +133,12 @@ def permutations(seq):
     >>> sorted(permutations("ab"))
     [['a', 'b'], ['b', 'a']]
     """
-    def gen():
-        yield iter(seq)
-    def gen2(s):
-        if s:
-            yield from gen2(s[1:])
-            yield s
-            
-    return gen2(seq)
+    if len(seq) == 1:
+        yield [seq[0]]
+    else:
+        for perm in permutations(seq[1:]):
+            for pos in range(len(seq)):
+                yield perm[:pos] + [seq[0]] + perm[pos:]
 
 
 def make_joint(withdraw, old_pass, new_pass):
