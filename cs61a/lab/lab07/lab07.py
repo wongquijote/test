@@ -8,6 +8,7 @@ def naturals():
     >>> [next(m) for _ in range(10)]
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     """
+    #infinite generator
     i = 1
     while True:
         yield i
@@ -27,8 +28,8 @@ def scale(it, multiplier):
     >>> [next(m) for _ in range(5)]
     [2, 4, 6, 8, 10]
     """
-    
-
+    for i in iter(it):
+        yield i * multiplier
 
 def hailstone(n):
     """
@@ -43,5 +44,13 @@ def hailstone(n):
     2
     1
     """
-    "*** YOUR CODE HERE ***"
+    if n > 1:
+        if n % 2 == 0:
+            yield n
+            yield from hailstone(n // 2)
+        else:
+            yield n
+            yield from hailstone(n * 3 + 1)
+    else:
+        yield 1
 
