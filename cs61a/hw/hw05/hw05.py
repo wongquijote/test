@@ -141,9 +141,12 @@ def store_digits(n):
     # if n < 10:
     #     return Link(n)
     # return Link(n % 10, store_digits(n // 10))
-    if n > 10:
-        return 
-    r
+    lnk = Link.empty
+    while n > 0:
+        lnk = Link(n % 10, lnk)
+        if n // 10 == 0:
+            return lnk
+        n = n // 10
 
 def is_bst(t):
     """Returns True if the Tree t has the structure of a valid BST.
